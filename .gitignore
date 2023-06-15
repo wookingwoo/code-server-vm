@@ -1,4 +1,3 @@
-data/
-site/
+code-server-data/
 nginx/
 .code.env

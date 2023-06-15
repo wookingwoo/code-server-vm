@@ -11,8 +11,7 @@ services:
       - PGID=82
       - TZ=Asia/Seoul
     volumes:
-      - ./data/code-server:/config
-      - ./site:/config/site
+      - ./code-server-data/code-server1_8443/config:/config
     ports:
       - 8443:8443
     restart: unless-stopped
