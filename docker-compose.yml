@@ -2,31 +2,6 @@ version: '3'
 
 services:
 
-  nginx:
-    image: nginx:alpine
-    container_name: nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./site:/var/www/html
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      # - ./nginx/nginx.conf:/etc/nginx/nginx.conf/
-      - ./nginx/logs:/var/log/nginx/
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/timezone:/etc/timezone:ro
-
-  certbot:
-    image: certbot/certbot:latest
-    container_name: certbot
-    volumes:
-      - ./ssl/:/etc/letsencrypt/
-      - ./usr/share/nginx/html:/usr/share/nginx/html
-      # - /usr/share/nginx/html:/usr/share/nginx/html
-      # command: certonly -n --webroot -w /usr/share/nginx/html -d code.wookingwoo.com
-    command: certonly --dry-run -n --webroot -w /usr/share/nginx/html -d code.wookingwoo.com
-
   code-server:
     image: linuxserver/code-server
     container_name: code-server
@@ -41,3 +16,27 @@ services:
     ports:
       - 8443:8443
     restart: unless-stopped
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nginx
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./site:/var/www/html
+  #     - ./nginx/conf.d:/etc/nginx/conf.d
+  #     # - ./nginx/nginx.conf:/etc/nginx/nginx.conf/
+  #     - ./nginx/logs:/var/log/nginx/
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /etc/timezone:/etc/timezone:ro
+
+  # certbot:
+  #   image: certbot/certbot:latest
+  #   container_name: certbot
+  #   volumes:
+  #     - ./ssl/:/etc/letsencrypt/
+  #     - ./usr/share/nginx/html:/usr/share/nginx/html
+  #     # - /usr/share/nginx/html:/usr/share/nginx/html
+  #     # command: certonly -n --webroot -w /usr/share/nginx/html -d code.wookingwoo.com
+  #   command: certonly --dry-run -n --webroot -w /usr/share/nginx/html -d code.wookingwoo.com
