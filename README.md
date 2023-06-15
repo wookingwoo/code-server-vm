@@ -3,5 +3,5 @@
 ## Getting Started
 
 ``` bash
-docker-compose up -d
+docker-compose -p wookingwoo-code-server-1 up -d
 ```
